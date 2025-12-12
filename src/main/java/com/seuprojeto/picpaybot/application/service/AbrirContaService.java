@@ -1,5 +1,6 @@
 package com.seuprojeto.picpaybot.application.service;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.seuprojeto.picpaybot.domain.model.Cliente;
 import com.seuprojeto.picpaybot.domain.ports.in.AbrirContaUseCase;
@@ -12,7 +13,7 @@ public class AbrirContaService implements AbrirContaUseCase {
     private final AutomationPort automation;
     private final NotifierPort notifier;
 
-    public AbrirContaService(AutomationPort automation, NotifierPort notifier) {
+    public AbrirContaService(AutomationPort automation,@Qualifier("noOpNotifierAdapter") NotifierPort notifier)  {
         this.automation = automation;
         this.notifier = notifier;
     }
